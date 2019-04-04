@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 
 public class TheGreatest {
+    
     public static int greatest(ArrayList<Integer> list) {
-        // write code here
-        return 0;
+        double greatestNum = Double.NEGATIVE_INFINITY;
+        
+        for (Integer integer : list) {
+            
+            if (integer > greatestNum) {
+                greatestNum = integer;
+            }
+        }
+        
+        return (int) greatestNum;
     }
 
     public static void main(String[] args) {

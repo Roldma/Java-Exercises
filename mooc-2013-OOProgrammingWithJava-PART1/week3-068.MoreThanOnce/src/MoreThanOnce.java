@@ -5,7 +5,22 @@ public class MoreThanOnce {
 
     public static boolean moreThanOnce(ArrayList<Integer> list, int searched) {
         // write your code here
-        return false;
+        int count = 0;
+        boolean tooMany = false;
+        
+        for (Integer integer : list) {
+            
+            if (integer == searched) {
+                count += 1;
+            }
+            
+            if (count == 2) {
+                tooMany = true;
+                break;
+            }
+        }
+        
+        return tooMany;
     }
 
     public static void main(String[] args) {
