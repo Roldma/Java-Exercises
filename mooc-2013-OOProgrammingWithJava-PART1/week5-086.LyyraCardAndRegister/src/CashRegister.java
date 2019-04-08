@@ -7,6 +7,7 @@ public class CashRegister {
 
     public CashRegister() {
         // at start the register has 1000 euros 
+        cashInRegister = 1000;
     }
 
     public double payEconomical(double cashGiven) {
@@ -15,7 +16,15 @@ public class CashRegister {
         //    the price of lunch is added to register
         //    the amount of sold lunch is incremented by one
         //    method returns cashGiven - lunch price 
-        // if not enough money given, all is returned and nothing else happens        
+        // if not enough money given, all is returned and nothing else happens
+        double price = 2.5;
+        
+        if (cashGiven >= price) {
+            economicalSold += 1;
+            cashInRegister += price;
+            return cashGiven - price;
+        }
+        
         return -1;
     }
 
@@ -26,9 +35,27 @@ public class CashRegister {
         //    the amount of sold lunch is incremented by one
         //    method returns cashGiven - lunch price 
         // if not enough money given, all is returned and nothing else happens
+        double price = 4.0;
+        
+        if (cashGiven >= price) {
+            economicalSold += 1;
+            cashInRegister += price;
+            return cashGiven - price;
+        }
+        
         return -1;
     }
+    
+    public boolean payEconomical(LyyraCard card) {
+        boolean enough = false;
+        
+        return enough;
+    }
 
+    public boolean payGourmet(LyyraCard card) {
+        boolean enough = false;
+        return enough;
+    }
 
     public String toString() {
         return "money in register " + cashInRegister + " economical lunches sold: " + economicalSold + " gourmet lunches sold: " + gourmetSold;

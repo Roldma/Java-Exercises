@@ -21,11 +21,7 @@ public class Person {
     }
 
     public boolean adult() {
-        if (this.age < 18) {
-            return false;
-        }
-
-        return true;
+        return this.age >= 18;
     }
 
     public double weightIndex() {
