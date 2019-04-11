@@ -18,14 +18,14 @@ public class CashRegister {
         //    method returns cashGiven - lunch price 
         // if not enough money given, all is returned and nothing else happens
         double price = 2.5;
-        
+
         if (cashGiven >= price) {
             economicalSold += 1;
             cashInRegister += price;
             return cashGiven - price;
         }
-        
-        return -1;
+
+        return cashGiven;
     }
 
     public double payGourmet(double cashGiven) {
@@ -36,27 +36,50 @@ public class CashRegister {
         //    method returns cashGiven - lunch price 
         // if not enough money given, all is returned and nothing else happens
         double price = 4.0;
-        
+
         if (cashGiven >= price) {
-            economicalSold += 1;
+            gourmetSold += 1;
             cashInRegister += price;
             return cashGiven - price;
         }
-        
-        return -1;
+
+        return cashGiven;
     }
-    
+
     public boolean payEconomical(LyyraCard card) {
         boolean enough = false;
+        double price = 2.5;
         
+        if (card.balance() >= price) {
+            enough = true;
+            economicalSold += 1;
+            card.pay(price);
+        }
+
         return enough;
     }
 
     public boolean payGourmet(LyyraCard card) {
         boolean enough = false;
+        double price = 4.0;
+        
+        if (card.balance() >= price) {
+            enough = true;
+            gourmetSold += 1;
+            card.pay(price);
+        }
+
         return enough;
     }
 
+    public void loadMoneyToCard(LyyraCard card, double sum) {
+        if (sum > 0) {
+            card.loadMoney(sum);
+            cashInRegister += sum;
+        }
+        
+    }
+    
     public String toString() {
         return "money in register " + cashInRegister + " economical lunches sold: " + economicalSold + " gourmet lunches sold: " + gourmetSold;
     }
